@@ -1,22 +1,11 @@
-import React from 'react';
+import { AppProvider } from '@/providers/app';
+import { AppRoutes } from '@/routes';
 
 function App() {
   return (
-    <div className="bg-gray-50">
-      <header className="text-gray-700">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
   );
 }
 
