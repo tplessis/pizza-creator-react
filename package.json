@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
-    "@tailwindcss/typography": "^0.5.0",
+    "@tailwindcss/typography": "^0.4.1",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -48,6 +48,14 @@
         "rules": {
           "import/no-anonymous-default-export": "off"
         }
+      },
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
       }
     ]
   },
@@ -63,13 +71,20 @@
       "last 1 safari version"
     ]
   },
-   "resolutions": {
+  "resolutions": {
     "babel-loader": "8.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.3.2",
+    "@storybook/addon-essentials": "^6.3.2",
+    "@storybook/addon-links": "^6.3.2",
+    "@storybook/node-logger": "^6.3.2",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.3.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^9",
+    "babel-loader": "8.1.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
@@ -82,10 +97,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-storybook": "^0.5.6",
     "eslint-plugin-testing-library": "^5.0.1",
-    "postcss": "^8.4.4",
+    "postcss": "^7",
     "prettier": "^2.5.1",
-    "tailwindcss": "^3.0.0"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "tsconfig-paths-webpack-plugin": "^3.5.2"
   },
   "config": {
     "commitizen": {
