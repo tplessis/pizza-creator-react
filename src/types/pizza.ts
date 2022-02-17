@@ -14,6 +14,6 @@ export type PizzaTopping = {
 
 export type Pizza = {
   id?: number;
-  size: PizzaSize;
-  toppings: Array<PizzaTopping>;
+  size?: PizzaSize;
+  toppings?: Array<PizzaTopping>;
 };

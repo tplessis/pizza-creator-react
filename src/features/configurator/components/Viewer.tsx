@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
-import { Pizza } from '@/types/pizza';
+import { PizzaTopping } from '@/types/pizza';
 
 import './viewer.scss';
 
 type ViewerProps = {
-  pizza?: Pizza;
+  toppings: PizzaTopping[];
 };
 
-export const Viewer = ({ pizza }: ViewerProps) => {
+export const Viewer = ({ toppings }: ViewerProps) => {
   const [isActive, setIsActive] = useState(false);
 
   setTimeout(() => {
@@ -23,9 +23,9 @@ export const Viewer = ({ pizza }: ViewerProps) => {
       <div className={clsx('pizza', isActive && 'active')}>
         <div className="board" />
         <div className="base" />
-        {pizza !== undefined ?? (
+        {toppings?.length ?? (
           <div className="toppings">
-            {pizza?.toppings?.map((topping, index) => (
+            {toppings?.map((topping, index) => (
               <div key={topping.id} style={{ zIndex: index }}>
                 <div className={clsx('topping', topping.label)} />
                 <div className={clsx('topping', topping.label)} />

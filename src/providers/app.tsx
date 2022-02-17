@@ -3,10 +3,12 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Button, Spinner } from '@/components/Elements';
 import { queryClient } from '@/lib/react-query';
+import { index } from '@/store';
 
 const ErrorFallback = () => {
   return (
@@ -28,21 +30,23 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <React.Suspense
-      fallback={
-        <div className="flex items-center justify-center w-screen h-screen">
-          <Spinner size="xl" />
-        </div>
-      }
-    >
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <HelmetProvider>
-          <QueryClientProvider client={queryClient}>
-            {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
-            <Router>{children}</Router>
-          </QueryClientProvider>
-        </HelmetProvider>
-      </ErrorBoundary>
-    </React.Suspense>
+    <Provider store={index}>
+      <React.Suspense
+        fallback={
+          <div className="flex items-center justify-center w-screen h-screen">
+            <Spinner size="xl" />
+          </div>
+        }
+      >
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <HelmetProvider>
+            <QueryClientProvider client={queryClient}>
+              {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
+              <Router>{children}</Router>
+            </QueryClientProvider>
+          </HelmetProvider>
+        </ErrorBoundary>
+      </React.Suspense>
+    </Provider>
   );
 };
