@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '@/store';
 
+import { Form } from '../components/Form';
 import { Viewer } from '../components/Viewer';
 
 export const Configurator = () => {
@@ -17,7 +18,7 @@ export const Configurator = () => {
         <Viewer toppings={toppingsState.configurator.toppings} />
       </div>
       <div className="z-10 w-full bg-white md:h-full md:w-7/12" style={formStyle}>
-        TODO
+        <Form />
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ export const Viewer = ({ toppings }: ViewerProps) => {
       <div className={clsx('pizza', isActive && 'active')}>
         <div className="board" />
         <div className="base" />
-        {toppings?.length ?? (
+        {toppings?.length > 0 ?? (
           <div className="toppings">
             {toppings?.map((topping, index) => (
               <div key={topping.id} style={{ zIndex: index }}>
