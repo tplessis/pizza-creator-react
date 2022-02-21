@@ -37,14 +37,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         className={clsx(
-          'rounded font-semibold text-center focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'rounded flex items-center font-semibold text-center focus:outline-none focus:ring-2 focus:ring-offset-2',
           variants[variant],
           sizes[size],
           className
         )}
         {...props}
       >
-        {isLoading && <Spinner size="sm" className="text-current" />}
+        {isLoading && (
+          <Spinner size="sm" className={clsx('text-current', size === 'sm' ? 'mr-1' : 'mr-2')} />
+        )}
         {props.children}
       </button>
     );

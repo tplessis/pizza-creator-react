@@ -10,15 +10,15 @@ module.exports = {
   ],
   webpackFinal: async (config) => {
     config.module.rules.push({
-      test: /\.css$/,
+      test: /\.scss$/,
       use: [
         {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
               ident: 'postcss',
-              plugins: [require('tailwindcss'), require('autoprefixer')]
-            }
+              plugins: [require('tailwindcss'), require('autoprefixer')],
+            },
           },
         },
       ],
