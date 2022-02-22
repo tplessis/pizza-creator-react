@@ -3,18 +3,18 @@ import clsx from 'clsx';
 
 import { PizzaSize } from '@/types/pizza';
 
-type PizzaSizeProps = {
+export type PizzaIconProps = {
   size?: PizzaSize;
   active?: boolean;
   darkMode?: boolean;
 };
 
-export const PizaIcon = ({ size, active = false, darkMode = false }: PizzaSizeProps = {}) => {
+export const PizzaIcon = ({ size, active = false, darkMode = false }: PizzaIconProps = {}) => {
   return (
     <div
       className={clsx(
-        'rounded-full m-1',
-        !darkMode ?? 'border-2',
+        'rounded-full m-1 inline-block',
+        !darkMode ? 'border-2' : '',
         active ? 'border-green-500' : 'border-white'
       )}
     >
