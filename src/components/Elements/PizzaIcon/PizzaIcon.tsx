@@ -20,7 +20,7 @@ export const PizzaIcon = ({ size, active = false, darkMode = false }: PizzaIconP
     >
       <div
         className={clsx(
-          'pizza m-1 relative rounded-full bg-yellow-400 border-2 border-red-900',
+          'pizza-icon m-1 relative rounded-full bg-yellow-400 border-2 border-red-900',
           size?.label,
           { 'opacity-70': darkMode, 'opacity-40': !darkMode }
         )}
