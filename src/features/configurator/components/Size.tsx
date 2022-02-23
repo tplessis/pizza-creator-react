@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { PizzaIcon } from '@/components/Elements/PizzaIcon/PizzaIcon';
@@ -8,11 +9,16 @@ import { usePizzaSizes } from '../api/getPizzaSizes';
 export const Size = () => {
   const {
     register,
+    setValue,
     watch,
     formState: { errors },
   } = useFormContext();
   const sizesQuery = usePizzaSizes();
   const watchSize = watch('size', false);
+
+  useEffect(() => {
+    register('size', { required: true });
+  }, [register]);
 
   return (
     <>
@@ -32,14 +38,17 @@ export const Size = () => {
             <input
               type="radio"
               className="hidden w-0 h-0"
+              checked={watchSize?.label === size.label}
               value={size.label}
-              {...register('size', { required: true })}
+              onChange={() => {
+                setValue('size', size);
+              }}
             />
-            <PizzaIcon size={size} active={watchSize === size.label} />
+            <PizzaIcon size={size} active={watchSize?.label === size.label} />
             <span
               className={clsx(
                 'block 2xl:text-base text-sm ml-2',
-                watchSize === size.label
+                watchSize?.label === size.label
                   ? 'text-green-500 font-semibold'
                   : 'font-normal text-gray-600'
               )}
