@@ -1,12 +1,14 @@
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Button } from '@/components/Elements';
-import { PizzaSize } from '@/types/pizza';
+import { PizzaSize, PizzaTopping } from '@/types/pizza';
 
 import { Size } from '../components/Size';
+import { Toppings } from '../components/Toppings';
 
 type Inputs = {
   size?: PizzaSize;
+  toppings?: PizzaTopping[];
 };
 
 export const Form = () => {
@@ -24,6 +26,9 @@ export const Form = () => {
             </span>
             <div>
               <Size />
+            </div>
+            <div>
+              <Toppings />
             </div>
           </div>
           <Button size="lg" type="submit">
