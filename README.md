@@ -1,4 +1,31 @@
-# Getting Started with Create React App
+<p align="center">
+<img width="800" src="https://github.com/tplessis/pizza-creator/blob/master/src/assets/images/app_preview.gif?raw=true"/>
+</p>
+
+---
+
+# PizzaCreator
+
+React version of my [PizzaCreator](https://github.com/tplessis/pizza-creator), originally developped using Angular.  
+
+**Note:** Assets and original idea of the pizza builder from Todd Motto. [Here](https://github.com/toddmotto/angular-pizza-creator) is the original version.
+
+## Introduction
+
+[PizzaCreator](https://pizza-creator-alpha.vercel.app/) This codebase was created to demonstrate a fully fledged application built with Angular. This is not supposed to be a template or a boilerplate. It'just an opinionated app that shows how to do some things in a certain way.
+
+**Some concepts / tools that has beeen used here :**
+- [x] Tooling (ESLint, Prettier, Commitizen...)
+- [x] Environment variables using a .env (dotenv)
+- [x] Fully typed app using Typescript
+- [x] Routing, Lazy Loading
+- [x] Smart / Dumb components architecture
+- [x] Reactive hooks form
+- [x] A simple store using Redux Toolkit
+- [x] A fresh UI using TailwindCSS with a real mobile version
+- [x] CSS animations
+
+## Getting started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -28,19 +55,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
