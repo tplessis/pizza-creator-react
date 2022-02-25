@@ -1,6 +1,8 @@
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 import { Button } from '@/components/Elements';
+import { configuratorSlice } from '@/features/configurator/store/configuratorSlice';
 import { PizzaSize, PizzaTopping } from '@/types/pizza';
 
 import { Size } from '../components/Size';
@@ -13,7 +15,12 @@ type Inputs = {
 
 export const Form = () => {
   const methods = useForm();
+  const dispatch = useDispatch();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const handleToppingsSelection = (toppings: PizzaTopping[]) => {
+    dispatch(configuratorSlice.actions.toppingUpdated(toppings));
+  };
 
   return (
     <FormProvider {...methods}>
@@ -28,7 +35,7 @@ export const Form = () => {
               <Size />
             </div>
             <div>
-              <Toppings />
+              <Toppings onSelectTopping={handleToppingsSelection} />
             </div>
           </div>
           <Button size="lg" type="submit">

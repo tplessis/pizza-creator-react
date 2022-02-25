@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { createRef, useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { PizzaTopping } from '@/types/pizza';
 
@@ -14,7 +15,7 @@ export const Viewer = ({ toppings }: ViewerProps) => {
 
   setTimeout(() => {
     setIsActive(true);
-  }, 500);
+  }, 300);
 
   return (
     <div className="relative md:h-full h-96">
@@ -23,18 +24,29 @@ export const Viewer = ({ toppings }: ViewerProps) => {
       <div className={clsx('pizza', isActive && 'active')}>
         <div className="board" />
         <div className="base" />
-        {toppings?.length > 0 ?? (
-          <div className="toppings">
-            {toppings?.map((topping, index) => (
-              <div key={topping.id} style={{ zIndex: index }}>
-                <div className={clsx('topping', topping.label)} />
-                <div className={clsx('topping', topping.label)} />
-                <div className={clsx('topping', topping.label)} />
-                <div className={clsx('topping', topping.label)} />
-                <div className={clsx('topping', topping.label)} />
-              </div>
-            ))}
-          </div>
+        {toppings?.length > 0 && (
+          <TransitionGroup className="toppings">
+            {toppings?.map((topping, index) => {
+              const itemRef = createRef<HTMLInputElement>();
+              return (
+                <CSSTransition
+                  nodeRef={itemRef}
+                  key={topping.id}
+                  timeout={500}
+                  appear={true}
+                  classNames="item"
+                >
+                  <div ref={itemRef} style={{ zIndex: index }}>
+                    <div className={clsx('topping', topping.label)} />
+                    <div className={clsx('topping', topping.label)} />
+                    <div className={clsx('topping', topping.label)} />
+                    <div className={clsx('topping', topping.label)} />
+                    <div className={clsx('topping', topping.label)} />
+                  </div>
+                </CSSTransition>
+              );
+            })}
+          </TransitionGroup>
         )}
       </div>
       <div className="absolute bottom-4 md:left-6 left-8" />

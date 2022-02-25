@@ -6,7 +6,11 @@ import { PizzaTopping } from '@/types/pizza';
 
 import { usePizzaToppings } from '../api/getPizzaToppings';
 
-export const Toppings = () => {
+type ToppingsProps = {
+  onSelectTopping: (t: PizzaTopping[]) => void;
+};
+
+export const Toppings = ({ onSelectTopping }: ToppingsProps) => {
   const {
     register,
     setValue,
@@ -26,11 +30,13 @@ export const Toppings = () => {
     if (selectedToppings.find((t) => t.id === topping.id) !== undefined) {
       setValue(
         'toppings',
-        selectedToppings.filter((t: PizzaTopping) => topping.label !== t.label)
+        selectedToppings.filter((t: PizzaTopping) => topping.id !== t.id)
       );
     } else {
       setValue('toppings', [...selectedToppings, topping]);
     }
+
+    onSelectTopping(getValues('toppings'));
   };
 
   return (

@@ -19,8 +19,8 @@ export const configuratorSlice = createSlice({
     sizeUpdated(state, action: PayloadAction<PizzaSize>) {
       state.size = action.payload;
     },
-    toppingAdded(state, action: PayloadAction<PizzaTopping>) {
-      state.toppings = [...state.toppings, action.payload];
+    toppingUpdated(state, action: PayloadAction<PizzaTopping[]>) {
+      state.toppings = [...action.payload];
     },
     toppingRemoved(state, action: PayloadAction<PizzaTopping>) {
       state.toppings = state.toppings.filter((topping) => action.payload.id === topping.id);
@@ -28,7 +28,7 @@ export const configuratorSlice = createSlice({
   },
 });
 
-export const { sizeUpdated, toppingAdded, toppingRemoved } = configuratorSlice.actions;
+export const { sizeUpdated, toppingUpdated, toppingRemoved } = configuratorSlice.actions;
 
 export const selectPizzaSize = (state: ConfiguratorState) => state.size;
 export const selectPizzaToppings = (state: ConfiguratorState) => state.toppings;
