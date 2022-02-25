@@ -25,10 +25,14 @@ export const configuratorSlice = createSlice({
     toppingRemoved(state, action: PayloadAction<PizzaTopping>) {
       state.toppings = state.toppings.filter((topping) => action.payload.id === topping.id);
     },
+    clear(state) {
+      state.size = undefined;
+      state.toppings = [];
+    },
   },
 });
 
-export const { sizeUpdated, toppingUpdated, toppingRemoved } = configuratorSlice.actions;
+export const { sizeUpdated, toppingUpdated, toppingRemoved, clear } = configuratorSlice.actions;
 
 export const selectPizzaSize = (state: ConfiguratorState) => state.size;
 export const selectPizzaToppings = (state: ConfiguratorState) => state.toppings;

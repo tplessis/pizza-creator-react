@@ -2,15 +2,17 @@ import clsx from 'clsx';
 import { createRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { PizzaTopping } from '@/types/pizza';
+import { Pizza, PizzaTopping } from '@/types/pizza';
 
 import './viewer.scss';
+import { CartIndicator } from '../components/CartIndicator';
 
 type ViewerProps = {
   toppings: PizzaTopping[];
+  pizzas: Pizza[];
 };
 
-export const Viewer = ({ toppings }: ViewerProps) => {
+export const Viewer = ({ toppings, pizzas }: ViewerProps) => {
   const [isActive, setIsActive] = useState(false);
 
   setTimeout(() => {
@@ -49,7 +51,9 @@ export const Viewer = ({ toppings }: ViewerProps) => {
           </TransitionGroup>
         )}
       </div>
-      <div className="absolute bottom-4 md:left-6 left-8" />
+      <div className="absolute bottom-4 md:left-6 left-8">
+        <CartIndicator cartItemsCount={pizzas?.length ?? 0} />
+      </div>
     </div>
   );
 };
